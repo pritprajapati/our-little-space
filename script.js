@@ -19,7 +19,7 @@ function moveSlide() {
 setInterval(moveSlide, 2000);
 
 // --- TIME TOGETHER COUNTER LOGIC (FLIP CLOCK) ---
-const startDate = new Date('2023-10-12T00:00:00'); // Remember to set your actual start date!
+const startDate = new Date('2024-03-03T00:00:00'); // Remember to set your actual start date!
 
 // Helper function to add leading zeros (e.g., turns 5 into 05)
 function pad(num) {
