@@ -18,9 +18,13 @@ function moveSlide() {
 // Automatically run the moveSlide function every 2000 milliseconds (2 seconds)
 setInterval(moveSlide, 2000);
 
-// --- TIME TOGETHER COUNTER LOGIC ---
-// Change this to the exact date you got together! (Format: YYYY-MM-DD)
-const startDate = new Date('2024-03-03T00:00:00'); 
+// --- TIME TOGETHER COUNTER LOGIC (FLIP CLOCK) ---
+const startDate = new Date('2023-10-12T00:00:00'); // Remember to set your actual start date!
+
+// Helper function to add leading zeros (e.g., turns 5 into 05)
+function pad(num) {
+    return num.toString().padStart(2, '0');
+}
 
 function updateCounter() {
     const now = new Date();
@@ -31,10 +35,28 @@ function updateCounter() {
     const minutes = Math.floor((difference / 1000 / 60) % 60);
     const seconds = Math.floor((difference / 1000) % 60);
 
-    document.getElementById('time-counter').innerHTML = 
-        `${days} Days, ${hours} Hrs, ${minutes} Mins, ${seconds} Secs`;
+    // Get the DOM elements
+    const daysEl = document.getElementById('fc-days');
+    const hoursEl = document.getElementById('fc-hours');
+    const minsEl = document.getElementById('fc-minutes');
+    const secsEl = document.getElementById('fc-seconds');
+
+    // Update the text inside the cards
+    daysEl.innerText = pad(days);
+    hoursEl.innerText = pad(hours);
+    minsEl.innerText = pad(minutes);
+    
+    // Only animate the seconds card every tick to give it that mechanical feel
+    if (secsEl.innerText !== pad(seconds)) {
+        secsEl.innerText = pad(seconds);
+        
+        // Remove and re-add the animation class to trigger it
+        secsEl.classList.remove('tick-anim');
+        void secsEl.offsetWidth; // This forces the browser to restart the animation
+        secsEl.classList.add('tick-anim');
+    }
 }
-// Run it once immediately, then update every second
+
 updateCounter();
 setInterval(updateCounter, 1000);
 
