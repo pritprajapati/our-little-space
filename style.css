@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Fredoka', sans-serif;
-    background-color: var(--bg-color);
+    background-color: white; /* Changed to match the crisp mockup background */
     color: var(--text-color);
     margin: 0;
     padding: 0;
@@ -21,12 +21,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 2px solid rgba(255, 77, 109, 0.2);
 }
 
 .menu-icon {
     font-size: 1.5rem;
     cursor: pointer;
+    color: #888;
 }
 
 .title {
@@ -36,66 +36,33 @@ header {
 }
 
 .spacer {
-    width: 24px; /* Matches menu-icon width for perfect centering */
+    width: 24px;
 }
 
-/* Carousel */
+/* Full Width Carousel */
 .carousel-container {
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-    margin: 30px auto;
+    width: 100%;
     overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    /* Removed max-width and borders so it stretches edge-to-edge */
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.6s ease-in-out;
 }
 
 .carousel-img {
     width: 100%;
     flex-shrink: 0;
     object-fit: cover;
-    aspect-ratio: 4/3; 
+    height: 300px; /* Base height for mobile */
 }
 
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    font-size: 1.5rem;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    color: var(--primary-color);
-}
-
-.nav-btn.left { left: 10px; }
-.nav-btn.right { right: 10px; }
-
-.dots-container {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.dot {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: #ffb3c1;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active {
-    background-color: var(--primary-color);
+/* Desktop sizing for the carousel */
+@media (min-width: 768px) {
+    .carousel-img {
+        height: 450px; 
+    }
 }
 
 /* Action Section */
@@ -104,49 +71,54 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    padding: 40px 20px;
 }
 
 .spice-text {
     font-size: 1.3rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+/* Flexbox to put the text/arrow side-by-side with the button */
+.quiz-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .quiz-prompt {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
-    transform: translateX(-40px); /* Offsets it to point at the button */
+    margin-right: 15px; /* Pushes the button to the right */
+    transform: translateY(-10px);
 }
 
 .handwritten-text {
-    font-family: 'Kalam', cursive; /* Gives it a sketchbook feel */
+    font-family: 'Kalam', cursive;
     font-size: 1.4rem;
     color: var(--primary-color);
     margin: 0;
     transform: rotate(-10deg);
 }
 
-.arrow {
-    font-size: 2rem;
-    color: var(--primary-color);
-    transform: rotate(-20deg) scaleX(-1);
-    margin-top: -10px;
-    margin-left: 30px;
+.squiggly-arrow {
+    width: 90px;
+    height: 50px;
+    margin-top: 5px;
+    transform: rotate(5deg);
 }
 
 .btn-quiz {
-    background-color: transparent;
+    background-color: var(--bg-color);
     color: var(--text-color);
     border: 2px solid var(--text-color);
-    padding: 10px 40px;
+    padding: 12px 45px;
     font-size: 1.2rem;
     font-family: inherit;
     border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
-    display: inline-block;
 }
 
 .btn-quiz:hover {
@@ -154,10 +126,24 @@ header {
     color: white;
 }
 
+/* The Yellow & Black Hazard Bar */
+.construction-bar {
+    height: 20px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #f1c40f,
+        #f1c40f 20px,
+        #000000 20px,
+        #000000 40px
+    );
+}
+
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     font-size: 0.9rem;
-    color: #8d99ae;
+    color: var(--text-color);
+    background-color: var(--bg-color); /* Matches the slight pink hue at the bottom of your mockup */
 }
