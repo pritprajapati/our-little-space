@@ -1,0 +1,163 @@
+:root {
+    --primary-color: #ff4d6d;
+    --bg-color: #fff0f3;
+    --text-color: #590d22;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 2px solid rgba(255, 77, 109, 0.2);
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.spacer {
+    width: 24px; /* Matches menu-icon width for perfect centering */
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.carousel-img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+    aspect-ratio: 4/3; 
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--primary-color);
+}
+
+.nav-btn.left { left: 10px; }
+.nav-btn.right { right: 10px; }
+
+.dots-container {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #ffb3c1;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Action Section */
+.action-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.spice-text {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.quiz-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    transform: translateX(-40px); /* Offsets it to point at the button */
+}
+
+.handwritten-text {
+    font-family: 'Kalam', cursive; /* Gives it a sketchbook feel */
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin: 0;
+    transform: rotate(-10deg);
+}
+
+.arrow {
+    font-size: 2rem;
+    color: var(--primary-color);
+    transform: rotate(-20deg) scaleX(-1);
+    margin-top: -10px;
+    margin-left: 30px;
+}
+
+.btn-quiz {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    padding: 10px 40px;
+    font-size: 1.2rem;
+    font-family: inherit;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-quiz:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #8d99ae;
+}
