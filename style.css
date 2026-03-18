@@ -393,3 +393,14 @@ footer {
         opacity: 0;
     }
 }
+
+/* --- SPOTIFY PLAYER --- */
+.spotify-container {
+    max-width: 350px; /* Keeps it neat and compact */
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.spotify-container:hover {
+    transform: translateY(-5px); /* Tiny floating effect when hovered */
+}
