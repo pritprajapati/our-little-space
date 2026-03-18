@@ -193,14 +193,71 @@ footer {
 }
 
 /* 2. Counter */
-.counter-display {
-    font-size: 1.5rem;
+/* --- NEW FLIP CLOCK STYLES --- */
+.flip-clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.colon {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    animation: pulse 1s infinite;
+}
+
+.flip-card {
+    position: relative;
+    background-color: #2b2d42; /* Dark slate color for the mechanical look */
+    color: #edf2f4;
+    font-size: 2.2rem;
     font-weight: 600;
-    background: var(--bg-color);
-    padding: 20px;
-    border-radius: 15px;
-    display: inline-block;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    font-family: 'Courier New', Courier, monospace; /* Monospace keeps the numbers perfectly aligned */
+    padding: 15px 12px;
+    border-radius: 8px;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+/* The horizontal split line across the cards */
+.flip-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* The mechanical tick animation */
+.tick-anim {
+    animation: mechanicalTick 0.2s ease-in-out;
+}
+
+@keyframes mechanicalTick {
+    0% { transform: scaleY(1); filter: brightness(1); }
+    50% { transform: scaleY(0.95); filter: brightness(0.8); }
+    100% { transform: scaleY(1); filter: brightness(1); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Mobile adjustments so it doesn't break the screen width */
+@media (max-width: 400px) {
+    .flip-card { font-size: 1.6rem; min-width: 45px; padding: 12px 8px; }
+    .colon { font-size: 1.5rem; gap: 4px; }
 }
 
 /* 3. Reasons */
