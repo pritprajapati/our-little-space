@@ -459,3 +459,77 @@ footer {
         font-size: 0.85rem;
     }
 }
+
+/* --- SCATTERED POLAROIDS --- */
+.polaroid-section {
+    padding-bottom: 80px; /* Gives some extra breathing room at the bottom of the page */
+    overflow: hidden; /* Prevents a horizontal scrollbar from the rotated images */
+}
+
+.polaroid-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 220px;
+    margin-top: 30px;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 25px 10px; /* Thicker padding on the bottom for the polaroid look */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    width: 130px;
+    position: absolute; /* Allows them to overlap */
+    transition: transform 0.3s ease, z-index 0s, box-shadow 0.3s ease;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    background-color: #eee;
+}
+
+.polaroid .note-text {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* The Scattering Effect */
+.polaroid:nth-child(1) {
+    transform: translate(-55%, -10px) rotate(-12deg);
+    z-index: 1;
+}
+
+.polaroid:nth-child(2) {
+    transform: translate(0, 15px) rotate(6deg);
+    z-index: 2;
+}
+
+.polaroid:nth-child(3) {
+    transform: translate(55%, -5px) rotate(-8deg);
+    z-index: 3;
+}
+
+/* Hover/Tap effect to bring the photo to the front and straighten it */
+.polaroid:hover, .polaroid:active {
+    transform: scale(1.15) rotate(0deg) translateZ(0) !important;
+    z-index: 10;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* Mobile Adjustments so they fit perfectly on smaller screens */
+@media (max-width: 450px) {
+    .polaroid { width: 110px; padding: 8px 8px 20px 8px; }
+    .polaroid img { height: 110px; }
+    .polaroid .note-text { font-size: 0.95rem; }
+    
+    .polaroid:nth-child(1) { transform: translate(-45%, -10px) rotate(-12deg); }
+    .polaroid:nth-child(3) { transform: translate(45%, -5px) rotate(-8deg); }
+}
