@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: 'Space Grotesk', sans-serif; /* Clean, slightly retro body font */
+    font-family: 'Space Grotesk', sans-serif;
     background-color: var(--bg-paper);
     /* Subtle paper noise texture */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
@@ -36,12 +36,12 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--moebius-blue);
-    text-shadow: 2px 2px 0px var(--ink-dark); /* Comic title shadow */
+    text-shadow: 2px 2px 0px var(--ink-dark);
     margin-bottom: 30px;
 }
 
 .handwritten-text {
-    font-family: 'Zeyada', cursive; /* Sharp, elegant artist script */
+    font-family: 'Zeyada', cursive;
     font-size: 2.5rem;
     color: var(--ink-dark);
 }
@@ -88,7 +88,7 @@ header {
     flex-shrink: 0;
     object-fit: cover;
     height: 350px;
-    border-right: var(--border-thick); /* Panel divider look */
+    border-right: var(--border-thick);
 }
 
 /* --- GENERAL SECTIONS --- */
@@ -125,7 +125,6 @@ header {
 
 .squiggly-arrow { width: 90px; height: 50px; transform: rotate(5deg); }
 
-/* The Illustrated Button */
 .btn-quiz {
     background-color: var(--moebius-pink);
     color: var(--ink-dark);
@@ -148,7 +147,7 @@ header {
     background-color: var(--moebius-green);
 }
 
-/* --- MINI POST-IT (Now a Paper Scrap) --- */
+/* --- MINI POST-IT (Paper Scrap) --- */
 .mini-post-it {
     position: absolute;
     top: 50%;
@@ -170,7 +169,7 @@ header {
     background: var(--moebius-pink);
 }
 
-.mini-post-it .pin { display: none; /* Removing the pin for a cleaner look */ }
+.mini-post-it .pin { display: none; }
 
 .mini-post-it .note-text {
     font-size: 1.4rem;
@@ -191,12 +190,11 @@ header {
 
 .profile-img {
     width: 130px;
-    height: 160px; /* Taller to emphasize the arch */
+    height: 160px;
     object-fit: cover;
     background-color: white;
     border: var(--border-thick);
     box-shadow: var(--hard-shadow);
-    /* Moebius signature archway shape! */
     border-radius: 80px 80px 10px 10px; 
     transition: all 0.2s ease;
     margin-bottom: 15px;
@@ -207,7 +205,7 @@ header {
     box-shadow: var(--hard-shadow-hover);
 }
 
-/* --- FLIP CLOCK (Drawn Panels) --- */
+/* --- FLIP CLOCK --- */
 .flip-clock {
     display: flex;
     justify-content: center;
@@ -226,7 +224,7 @@ header {
     padding: 15px 12px;
     min-width: 60px;
     border: var(--border-thick);
-    box-shadow: 4px 4px 0px var(--moebius-blue); /* Blue offset shadow */
+    box-shadow: 4px 4px 0px var(--moebius-blue);
     text-align: center;
     border-radius: 4px;
 }
@@ -290,13 +288,58 @@ header {
 
 .timeline-content p { margin: 0; font-size: 0.95rem; font-weight: 600; }
 
+/* --- SPOTIFY PLAYER FIX --- */
+.spotify-container {
+    max-width: 400px; /* Constrains the width perfectly */
+    width: 100%;
+    margin: 0 auto;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--ink-dark);
+}
+
+.spotify-container iframe { 
+    display: block; /* Removes weird gaps below iframe */
+    width: 100%;
+    box-shadow: none !important; 
+    border-radius: 0 !important; 
+}
+
+/* --- BUCKET LIST FIX --- */
+.bucket-list {
+    list-style-type: none !important; /* Removes the stray black dots */
+    padding: 0;
+    margin: 0 auto;
+    max-width: 350px;
+    display: inline-block; /* Forces it to shrink to its content and center */
+    text-align: left;
+    font-weight: 600;
+}
+
+.bucket-list li { 
+    margin-bottom: 15px; 
+    font-size: 1.1rem; 
+    display: flex;
+    align-items: center;
+}
+
+.bucket-list input[type="checkbox"] { 
+    width: 20px; 
+    height: 20px; 
+    accent-color: var(--moebius-blue); 
+    border: var(--border-thick); 
+    margin-right: 15px;
+}
+
 /* --- SCATTERED POLAROIDS FIX --- */
 .polaroid-grid {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 380px; /* Gives them plenty of vertical room */
+    min-height: 380px; 
     margin-top: 40px;
 }
 
@@ -305,50 +348,103 @@ header {
     padding: 12px 12px 35px 12px;
     border: var(--border-thick);
     box-shadow: var(--hard-shadow);
-    width: 200px; /* Widened the card so the text fits nicely */
+    width: 200px;
     position: absolute;
     transition: transform 0.3s ease, z-index 0s, box-shadow 0.3s ease;
 }
 
 .polaroid img {
     width: 100%;
-    height: 200px; /* Keeps the photo perfectly square */
+    height: 200px; 
     object-fit: cover;
     border: 2px solid var(--ink-dark);
 }
 
 .polaroid .note-text { 
     margin-top: 15px; 
-    font-size: 1.4rem; /* Scaled down the font so it doesn't break */
+    font-size: 1.4rem;
     text-align: center;
     line-height: 1.2;
 }
 
-/* Pushing them much further apart */
+/* Base positions (Pushed apart) */
 .polaroid:nth-child(1) { transform: translate(-110%, -10px) rotate(-10deg); z-index: 1; }
 .polaroid:nth-child(2) { transform: translate(0, 20px) rotate(4deg); z-index: 2; }
 .polaroid:nth-child(3) { transform: translate(110%, -5px) rotate(-8deg); z-index: 3; }
 
-/* The Pop-up Hover Effect */
-.polaroid:hover, .polaroid:active {
-    transform: scale(1.1) rotate(0deg) translate(0, -10px) !important;
+/* The Pop-up Hover Effect (Straightens in place!) */
+.polaroid:nth-child(1):hover, .polaroid:nth-child(1):active {
+    transform: translate(-110%, -20px) rotate(0deg) scale(1.05) !important;
+    box-shadow: 8px 8px 0px var(--ink-dark);
+    z-index: 10;
+}
+.polaroid:nth-child(2):hover, .polaroid:nth-child(2):active {
+    transform: translate(0, 5px) rotate(0deg) scale(1.05) !important;
+    box-shadow: 8px 8px 0px var(--ink-dark);
+    z-index: 10;
+}
+.polaroid:nth-child(3):hover, .polaroid:nth-child(3):active {
+    transform: translate(110%, -15px) rotate(0deg) scale(1.05) !important;
     box-shadow: 8px 8px 0px var(--ink-dark);
     z-index: 10;
 }
 
-/* Mobile Adjustments so they don't break off-screen on phones */
+/* --- FLOATING DECOR --- */
+.floating-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1;
+    margin: 0; padding: 0; overflow: hidden;
+}
+
+.floating-decor li {
+    position: absolute; display: block; list-style: none;
+    font-size: 2rem;
+    animation: floatUp 15s linear infinite;
+    bottom: -50px;
+    opacity: 0.2; 
+    filter: grayscale(100%) contrast(200%); 
+}
+
+.floating-decor li:nth-child(1) { left: 10%; animation-duration: 18s; animation-delay: 0s; }
+.floating-decor li:nth-child(2) { left: 30%; animation-duration: 14s; animation-delay: 2s; font-size: 1.5rem; }
+.floating-decor li:nth-child(3) { left: 50%; animation-duration: 20s; animation-delay: 4s; }
+.floating-decor li:nth-child(4) { left: 70%; animation-duration: 15s; animation-delay: 0s; font-size: 1.2rem; }
+.floating-decor li:nth-child(5) { left: 85%; animation-duration: 19s; animation-delay: 3s; }
+.floating-decor li:nth-child(6) { left: 20%; animation-duration: 16s; animation-delay: 7s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- MOBILE TWEAKS --- */
 @media (max-width: 768px) {
     .polaroid { width: 150px; padding: 10px 10px 25px 10px; }
     .polaroid img { height: 150px; }
     .polaroid .note-text { font-size: 1.2rem; }
+    
     .polaroid:nth-child(1) { transform: translate(-80%, -10px) rotate(-10deg); }
     .polaroid:nth-child(3) { transform: translate(80%, -5px) rotate(-8deg); }
+
+    .polaroid:nth-child(1):hover, .polaroid:nth-child(1):active { transform: translate(-80%, -20px) rotate(0deg) scale(1.05) !important; }
+    .polaroid:nth-child(3):hover, .polaroid:nth-child(3):active { transform: translate(80%, -15px) rotate(0deg) scale(1.05) !important; }
 }
 
 @media (max-width: 500px) {
+    .mini-post-it { width: 100px; margin-left: 15px; }
+    .flip-card { font-size: 1.5rem; min-width: 45px; padding: 12px 8px; }
+    .colon { font-size: 1.5rem; gap: 4px; }
+    
     .polaroid { width: 110px; padding: 8px 8px 20px 8px; }
     .polaroid img { height: 110px; }
     .polaroid .note-text { font-size: 0.95rem; }
+    
     .polaroid:nth-child(1) { transform: translate(-65%, -10px) rotate(-10deg); }
     .polaroid:nth-child(3) { transform: translate(65%, -5px) rotate(-8deg); }
+
+    .polaroid:nth-child(1):hover, .polaroid:nth-child(1):active { transform: translate(-65%, -20px) rotate(0deg) scale(1.05) !important; }
+    .polaroid:nth-child(3):hover, .polaroid:nth-child(3):active { transform: translate(65%, -15px) rotate(0deg) scale(1.05) !important; }
 }
