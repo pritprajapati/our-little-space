@@ -1,375 +1,377 @@
+/* =========================================
+   THEME: MOEBIUS TRIBUTE (RETRO ILLUSTRATED)
+   ========================================= */
+
 :root {
-    --primary-color: #ff4d6d;
-    --bg-color: #fff0f3;
-    --text-color: #590d22;
+    /* The New Moebius Color Palette */
+    --bg-paper: #f4f0ea;       /* Textured Cream */
+    --ink-dark: #2d2c33;       /* Charcoal Outline */
+    --moebius-blue: #909ac4;   /* Muted Periwinkle */
+    --moebius-green: #94c9a9;  /* Sage/Botanical Green */
+    --moebius-pink: #f6c4c4;   /* Pale Pastel Pink */
+    
+    /* Illustrated UI Variables */
+    --border-thick: 3px solid var(--ink-dark);
+    --hard-shadow: 6px 6px 0px var(--ink-dark);
+    --hard-shadow-hover: 2px 2px 0px var(--ink-dark);
 }
 
 body {
-    font-family: 'Fredoka', sans-serif;
-    background-color: white; /* Changed to match the crisp mockup background */
-    color: var(--text-color);
+    font-family: 'Space Grotesk', sans-serif; /* Clean, slightly retro body font */
+    background-color: var(--bg-paper);
+    /* Subtle paper noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+    color: var(--ink-dark);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Header */
+/* --- TYPOGRAPHY --- */
+.section-title, .title {
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--moebius-blue);
+    text-shadow: 2px 2px 0px var(--ink-dark); /* Comic title shadow */
+    margin-bottom: 30px;
+}
+
+.handwritten-text {
+    font-family: 'Zeyada', cursive; /* Sharp, elegant artist script */
+    font-size: 2.5rem;
+    color: var(--ink-dark);
+}
+
+.spice-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.2rem;
+    color: var(--ink-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+/* --- HEADER --- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
+    border-bottom: var(--border-thick);
+    background-color: var(--bg-paper);
+    position: relative;
+    z-index: 10;
 }
 
-.menu-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #888;
-}
+.menu-icon { font-size: 1.5rem; cursor: pointer; color: var(--ink-dark); }
+.spacer { width: 24px; }
 
-.title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.spacer {
-    width: 24px;
-}
-
-/* Full Width Carousel */
+/* --- CAROUSEL (Comic Panel Style) --- */
 .carousel-container {
     width: 100%;
     overflow: hidden;
-    /* Removed max-width and borders so it stretches edge-to-edge */
+    border-bottom: var(--border-thick);
+    background-color: var(--ink-dark);
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .carousel-img {
     width: 100%;
     flex-shrink: 0;
     object-fit: cover;
-    height: 300px; /* Base height for mobile */
+    height: 350px;
+    border-right: var(--border-thick); /* Panel divider look */
 }
 
-/* Desktop sizing for the carousel */
-@media (min-width: 768px) {
-    .carousel-img {
-        height: 450px; 
-    }
+/* --- GENERAL SECTIONS --- */
+.content-section {
+    padding: 50px 20px;
+    border-bottom: 2px dashed var(--ink-dark);
+    text-align: center;
+    position: relative;
 }
 
-/* Action Section */
+/* --- THE QUIZ AREA --- */
 .action-section {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 2px dashed var(--ink-dark);
 }
 
-.spice-text {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-}
-
-/* The new anchor wrapper */
 .quiz-container {
     position: relative;
     display: inline-block;
 }
 
-/* Positioned absolutely to the left of the button */
 .quiz-prompt {
     position: absolute;
-    right: 100%; /* Pushes it completely outside the left edge of the button */
+    right: 100%;
     top: 50%;
-    transform: translateY(-50%); /* Centers it vertically relative to the button */
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: max-content; /* Prevents the text from wrapping on smaller screens */
-    margin-right: 15px; /* Adjust this to add more or less space between the arrow and button */
+    width: max-content;
+    margin-right: 15px;
 }
 
-.handwritten-text {
-    font-family: 'Kalam', cursive;
-    font-size: 1.4rem;
-    color: var(--primary-color);
-    margin: 0;
-    transform: rotate(-10deg);
-}
+.squiggly-arrow { width: 90px; height: 50px; transform: rotate(5deg); }
 
-.squiggly-arrow {
-    width: 90px;
-    height: 50px;
-    margin-top: 5px;
-    transform: rotate(5deg);
-}
-
+/* The Illustrated Button */
 .btn-quiz {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border: 2px solid var(--text-color);
-    padding: 12px 45px;
+    background-color: var(--moebius-pink);
+    color: var(--ink-dark);
+    font-family: 'Archivo Black', sans-serif;
     font-size: 1.2rem;
-    font-family: inherit;
-    border-radius: 50px;
+    letter-spacing: 1px;
+    padding: 12px 40px;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
     text-decoration: none;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
-.btn-quiz:hover {
-    background-color: var(--text-color);
-    color: white;
+.btn-quiz:hover, .btn-quiz:active {
+    transform: translate(4px, 4px);
+    box-shadow: var(--hard-shadow-hover);
+    background-color: var(--moebius-green);
 }
 
-/* The Yellow & Black Hazard Bar */
-.construction-bar {
-    height: 20px;
-    width: 100%;
-    background: repeating-linear-gradient(
-        45deg,
-        #f1c40f,
-        #f1c40f 20px,
-        #000000 20px,
-        #000000 40px
-    );
+/* --- MINI POST-IT (Now a Paper Scrap) --- */
+.mini-post-it {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%) rotate(4deg);
+    margin-left: 25px;
+    background: var(--moebius-green);
+    width: 120px;
+    padding: 15px 10px 10px;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
+    transition: transform 0.2s ease;
+    z-index: 5;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 0.9rem;
-    color: var(--text-color);
-    background-color: var(--bg-color); /* Matches the slight pink hue at the bottom of your mockup */
+.mini-post-it:hover {
+    transform: translateY(-50%) rotate(0deg) translate(2px, 2px);
+    box-shadow: var(--hard-shadow-hover);
+    background: var(--moebius-pink);
 }
 
-/* --- NEW FEATURE SECTIONS --- */
-.content-section {
-    padding: 40px 20px;
-    border-bottom: 1px dashed rgba(255, 77, 109, 0.3);
-    text-align: center;
+.mini-post-it .pin { display: none; /* Removing the pin for a cleaner look */ }
+
+.mini-post-it .note-text {
+    font-size: 1.4rem;
+    color: var(--ink-dark);
+    margin: 0;
+    line-height: 1.1;
 }
 
-.section-title {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-}
-
-/* 1. Duo Profiles */
+/* --- DUO PROFILES (Moebius Archways) --- */
 .profiles {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.profile-card {
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-
-.profile-card:hover {
-    transform: scale(1.05);
-}
+.profile-card { text-decoration: none; }
 
 .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 130px;
+    height: 160px; /* Taller to emphasize the arch */
     object-fit: cover;
-    border: 4px solid var(--bg-color);
-    box-shadow: 0 8px 15px rgba(89, 13, 34, 0.15);
-    margin-bottom: 10px;
+    background-color: white;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
+    /* Moebius signature archway shape! */
+    border-radius: 80px 80px 10px 10px; 
+    transition: all 0.2s ease;
+    margin-bottom: 15px;
 }
 
-/* 2. Counter */
-/* --- NEW FLIP CLOCK STYLES --- */
+.profile-card:hover .profile-img {
+    transform: translate(4px, 4px);
+    box-shadow: var(--hard-shadow-hover);
+}
+
+/* --- FLIP CLOCK (Drawn Panels) --- */
 .flip-clock {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.colon {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    animation: pulse 1s infinite;
-}
+.colon { font-size: 2rem; color: var(--ink-dark); animation: pulse 1s infinite; }
 
 .flip-card {
-    position: relative;
-    background-color: #2b2d42; /* Dark slate color for the mechanical look */
-    color: #edf2f4;
-    font-size: 2.2rem;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace; /* Monospace keeps the numbers perfectly aligned */
+    background-color: var(--bg-paper);
+    color: var(--ink-dark);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2rem;
     padding: 15px 12px;
-    border-radius: 8px;
     min-width: 60px;
+    border: var(--border-thick);
+    box-shadow: 4px 4px 0px var(--moebius-blue); /* Blue offset shadow */
     text-align: center;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.2);
-    overflow: hidden;
+    border-radius: 4px;
 }
 
-/* The horizontal split line across the cards */
-.flip-card::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: rgba(0, 0, 0, 0.6);
-    transform: translateY(-50%);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
-}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* The mechanical tick animation */
-.tick-anim {
-    animation: mechanicalTick 0.2s ease-in-out;
-}
-
-@keyframes mechanicalTick {
-    0% { transform: scaleY(1); filter: brightness(1); }
-    50% { transform: scaleY(0.95); filter: brightness(0.8); }
-    100% { transform: scaleY(1); filter: brightness(1); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Mobile adjustments so it doesn't break the screen width */
-@media (max-width: 400px) {
-    .flip-card { font-size: 1.6rem; min-width: 45px; padding: 12px 8px; }
-    .colon { font-size: 1.5rem; gap: 4px; }
-}
-
-/* 3. Reasons */
+/* --- REASONS DISPLAY --- */
 .reason-display {
-    font-family: 'Kalam', cursive;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    min-height: 60px; /* Keeps layout from jumping */
+    font-family: 'Zeyada', cursive;
+    font-size: 2.2rem;
+    color: var(--ink-dark);
+    min-height: 80px;
     padding: 0 20px;
+    line-height: 1.1;
 }
 
-/* 4. Timeline */
+/* --- TIMELINE --- */
 .timeline {
     position: relative;
     max-width: 400px;
     margin: 0 auto;
     text-align: left;
+    padding: 20px 0;
 }
 
 .timeline::after {
     content: '';
     position: absolute;
-    width: 4px;
-    background-color: var(--bg-color);
+    width: 3px;
+    background-color: var(--ink-dark);
     top: 0;
     bottom: 0;
     left: 14px;
-    border-radius: 4px;
 }
 
 .timeline-item {
     position: relative;
-    padding-left: 45px;
-    margin-bottom: 30px;
+    padding-left: 50px;
+    margin-bottom: 35px;
 }
 
 .timeline-dot {
     position: absolute;
-    left: 6px;
+    left: 4px;
     top: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-color);
+    width: 22px;
+    height: 22px;
+    background-color: var(--moebius-pink);
+    border: var(--border-thick);
     border-radius: 50%;
     z-index: 1;
-    box-shadow: 0 0 0 4px white;
 }
 
 .timeline-content h4 {
+    font-family: 'Archivo Black', sans-serif;
+    color: var(--moebius-blue);
     margin: 0 0 5px 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
-.timeline-content p {
-    margin: 0;
-    color: #666;
-    font-size: 0.95rem;
+.timeline-content p { margin: 0; font-size: 0.95rem; font-weight: 600; }
+
+/* --- SPOTIFY & BUCKET LIST --- */
+.spotify-container {
+    max-width: 350px;
+    margin: 0 auto;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
+    border-radius: 12px;
+    overflow: hidden; /* Clips the iframe to the border */
+    background: var(--ink-dark);
 }
 
-/* 5. Bucket List */
+.spotify-container iframe { box-shadow: none !important; border-radius: 0 !important; }
+
 .bucket-list {
     list-style: none;
     padding: 0;
     max-width: 350px;
     margin: 0 auto;
     text-align: left;
+    font-weight: 600;
 }
 
-.bucket-list li {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
+.bucket-list li { margin-bottom: 15px; font-size: 1.1rem; }
+.bucket-list input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--moebius-blue); border: var(--border-thick); }
 
-.bucket-list label {
+/* --- SCATTERED POLAROIDS --- */
+.polaroid-grid {
     display: flex;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    position: relative;
+    min-height: 250px;
+    margin-top: 40px;
 }
 
-.bucket-list input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 15px;
-    accent-color: var(--primary-color);
-    cursor: pointer;
+.polaroid {
+    background: var(--bg-paper);
+    padding: 10px 10px 30px 10px;
+    border: var(--border-thick);
+    box-shadow: var(--hard-shadow);
+    width: 140px;
+    position: absolute;
+    transition: transform 0.2s ease, z-index 0s, box-shadow 0.2s ease;
 }
 
-/* --- FLOATING BACKGROUND DECOR --- */
+.polaroid img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border: 2px solid var(--ink-dark);
+}
+
+.polaroid .note-text { margin-top: 15px; font-size: 1.8rem; }
+
+.polaroid:nth-child(1) { transform: translate(-55%, -10px) rotate(-8deg); z-index: 1; }
+.polaroid:nth-child(2) { transform: translate(0, 15px) rotate(4deg); z-index: 2; }
+.polaroid:nth-child(3) { transform: translate(55%, -5px) rotate(-6deg); z-index: 3; }
+
+.polaroid:hover, .polaroid:active {
+    transform: scale(1.1) rotate(0deg) translate(4px, 4px) !important;
+    box-shadow: var(--hard-shadow-hover);
+    z-index: 10;
+}
+
+/* --- FLOATING DECOR --- */
 .floating-decor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Prevents them from blocking clicks */
-    z-index: -1; /* Keeps them behind your content */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1;
+    margin: 0; padding: 0; overflow: hidden;
 }
 
 .floating-decor li {
-    position: absolute;
-    display: block;
-    list-style: none;
+    position: absolute; display: block; list-style: none;
     font-size: 2rem;
     animation: floatUp 15s linear infinite;
     bottom: -50px;
-    opacity: 0.4; /* Keeps them subtle */
+    opacity: 0.2; /* Subtler for the retro theme */
+    filter: grayscale(100%) contrast(200%); /* Makes emojis look more like drawn symbols */
 }
 
-/* Randomizing the starting positions and speeds */
+/* Same animations as before */
 .floating-decor li:nth-child(1) { left: 10%; animation-duration: 18s; animation-delay: 0s; }
 .floating-decor li:nth-child(2) { left: 30%; animation-duration: 14s; animation-delay: 2s; font-size: 1.5rem; }
 .floating-decor li:nth-child(3) { left: 50%; animation-duration: 20s; animation-delay: 4s; }
@@ -378,158 +380,19 @@ footer {
 .floating-decor li:nth-child(6) { left: 20%; animation-duration: 16s; animation-delay: 7s; }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.4;
-    }
-    90% {
-        opacity: 0.4;
-    }
-    100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
-/* --- SPOTIFY PLAYER --- */
-.spotify-container {
-    max-width: 350px; /* Keeps it neat and compact */
-    margin: 0 auto;
-    transition: transform 0.3s ease;
-}
-
-.spotify-container:hover {
-    transform: translateY(-5px); /* Tiny floating effect when hovered */
-}
-
-/* --- THE MINI POST-IT NOTE --- */
-.mini-post-it {
-    position: absolute;
-    top: 50%;
-    left: 100%; /* Pushes it exactly to the right edge of the Quiz button */
-    transform: translateY(-50%) rotate(6deg); /* Centers vertically, tilts slightly */
-    margin-left: 25px; /* Adds space between the button and the note */
-    background: #fdfd96;
-    width: 120px; /* Much smaller width */
-    padding: 15px 10px 10px;
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-    border-bottom-right-radius: 20px 5px; /* Subtle page curl */
-    transition: transform 0.3s ease, z-index 0s;
-    z-index: 5;
-    pointer-events: auto;
-}
-
-/* Straightens out when hovered/tapped */
-.mini-post-it:hover {
-    transform: translateY(-50%) rotate(0deg) scale(1.1);
-    z-index: 10;
-}
-
-.mini-post-it .pin {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    margin: 0;
-    z-index: 2;
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
-}
-
-.mini-post-it .note-text {
-    font-family: 'Kalam', cursive;
-    font-size: 0.95rem; /* Smaller, realistic handwriting size */
-    color: #444;
-    line-height: 1.3;
-    margin: 0;
-    text-align: center;
-    transform: none; /* Keeps text flat on the tilted paper */
-}
-
-/* Mobile tweak: hide or adjust if screens get too narrow */
+/* --- MOBILE TWEAKS --- */
 @media (max-width: 500px) {
-    .mini-post-it {
-        width: 100px;
-        margin-left: 15px;
-    }
-    .mini-post-it .note-text {
-        font-size: 0.85rem;
-    }
-}
-
-/* --- SCATTERED POLAROIDS --- */
-.polaroid-section {
-    padding-bottom: 80px; /* Gives some extra breathing room at the bottom of the page */
-    overflow: hidden; /* Prevents a horizontal scrollbar from the rotated images */
-}
-
-.polaroid-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    min-height: 220px;
-    margin-top: 30px;
-}
-
-.polaroid {
-    background: white;
-    padding: 10px 10px 25px 10px; /* Thicker padding on the bottom for the polaroid look */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    border-radius: 2px;
-    width: 130px;
-    position: absolute; /* Allows them to overlap */
-    transition: transform 0.3s ease, z-index 0s, box-shadow 0.3s ease;
-}
-
-.polaroid img {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;
-    display: block;
-    background-color: #eee;
-}
-
-.polaroid .note-text {
-    margin-top: 8px;
-    font-size: 1.1rem;
-    color: #333;
-    text-align: center;
-    line-height: 1.2;
-}
-
-/* The Scattering Effect */
-.polaroid:nth-child(1) {
-    transform: translate(-55%, -10px) rotate(-12deg);
-    z-index: 1;
-}
-
-.polaroid:nth-child(2) {
-    transform: translate(0, 15px) rotate(6deg);
-    z-index: 2;
-}
-
-.polaroid:nth-child(3) {
-    transform: translate(55%, -5px) rotate(-8deg);
-    z-index: 3;
-}
-
-/* Hover/Tap effect to bring the photo to the front and straighten it */
-.polaroid:hover, .polaroid:active {
-    transform: scale(1.15) rotate(0deg) translateZ(0) !important;
-    z-index: 10;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
-
-/* Mobile Adjustments so they fit perfectly on smaller screens */
-@media (max-width: 450px) {
-    .polaroid { width: 110px; padding: 8px 8px 20px 8px; }
+    .mini-post-it { width: 100px; margin-left: 15px; }
+    .flip-card { font-size: 1.5rem; min-width: 45px; padding: 12px 8px; }
+    .colon { font-size: 1.5rem; gap: 4px; }
+    .polaroid { width: 110px; }
     .polaroid img { height: 110px; }
-    .polaroid .note-text { font-size: 0.95rem; }
-    
-    .polaroid:nth-child(1) { transform: translate(-45%, -10px) rotate(-12deg); }
-    .polaroid:nth-child(3) { transform: translate(45%, -5px) rotate(-8deg); }
+    .polaroid:nth-child(1) { transform: translate(-45%, -10px) rotate(-8deg); }
+    .polaroid:nth-child(3) { transform: translate(45%, -5px) rotate(-6deg); }
 }
