@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Little Space</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="room-container">
+
+        <div class="wall">
+            <svg class="rope" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path d="M0,50 Q250,100 500,60 T1000,40" fill="none" stroke="#5c4033" stroke-width="4"/>
+                <circle cx="150" cy="75" r="4" class="fairy-light red"/>
+                <circle cx="350" cy="75" r="4" class="fairy-light yellow"/>
+                <circle cx="650" cy="55" r="4" class="fairy-light blue"/>
+                <circle cx="850" cy="45" r="4" class="fairy-light yellow"/>
+            </svg>
+
+            <div class="polaroid-row">
+                <a href="map.html" class="hanging-polaroid p1">
+                    <div class="clip"></div>
+                    <div class="photo-placeholder">🗺️</div>
+                    <p class="caption">The Journey</p>
+                </a>
+                <a href="room.html" class="hanging-polaroid p2">
+                    <div class="clip"></div>
+                    <div class="photo-placeholder">🛋️</div>
+                    <p class="caption">Cozy Corner</p>
+                </a>
+                <a href="desk.html" class="hanging-polaroid p3">
+                    <div class="clip"></div>
+                    <div class="photo-placeholder">📚</div>
+                    <p class="caption">Our Vault</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="lamp-glow"></div>
+
+            <div class="desk-items">
+                <div class="digital-clock" id="clock">00:00</div>
+
+                <div class="desk-calendar">
+                    <div class="cal-header" id="cal-month-year">Month 202X</div>
+                    <div class="cal-date">
+                        <span class="red-circle" id="cal-day">00</span>
+                    </div>
+                </div>
+
+                <a href="quiz.html" class="diary">
+                    <span class="pen">🖋️</span>
+                    Diary
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
